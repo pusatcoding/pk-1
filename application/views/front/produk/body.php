@@ -21,14 +21,14 @@
 <section class="search-wrapper">
     <div class="search-area2 bgimage">
         <div class="bg_image_holder" style="background-image: url(&quot;images/search.jpg&quot;); opacity: 1;">
-            <img src="images/search.jpg" alt="images/search.jpg">
+            <img src="<?php echo base_url() ?>assets/fronted1/images/search.jpg" alt="images/search.jpg">
         </div>
         <div class="container content_above">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="search">
                         <div class="search__title">
-                            <h3><span>39</span> Project Yang Selalu Menunggumu</h3>
+                            <h3>pusat<b>{koding}</b>.com</h3>
                         </div>
                         <div class="search__field">
                             <?php echo form_open('produk/cari_produk') ?>
@@ -72,10 +72,10 @@
                     <div class="item__preview-slider">
                         <div class="prev-slide">
                             <?php
-								if(empty($produk->foto)) {echo "<img class='img-thumbnail' src='".base_url()."assets/images/no_image_thumb.png' width='400' height='400'>";}
-								else{
-									echo "
-									<img src='".base_url()."assets/images/produk/".$produk->foto.'_thumb'.$produk->foto_type."' title='$produk->judul_produk' alt='$produk->judul_produk' width='730' height='423'>";}
+							if(empty($produk->foto)) {echo "<img class='img-thumbnail' src='".base_url()."assets/images/no_image_thumb.png' width='100%' height='400'>";}
+							else{
+							echo "
+							<img src='".base_url()."assets/images/produk/".$produk->foto.'_thumb'.$produk->foto_type."' title='$produk->judul_produk' alt='$produk->judul_produk'  width='100%' height='400'>";}
 							?>
                         </div>
                     </div>
@@ -86,10 +86,10 @@
                             <div class="thumb-slider">
                                 <div class="item-thumb">
                                     <?php
-                                    if(empty($produk->foto)) {echo "<img class='img-thumbnail' src='".base_url()."assets/images/no_image_thumb.png' width='400' height='400'>";}
+                                    if(empty($produk->foto)) {echo "<img class='img-thumbnail' src='".base_url()."assets/images/no_image_thumb.png'>";}
                                     else{
 									echo "
-									<img src='".base_url()."assets/images/produk/".$produk->foto.'_thumb'.$produk->foto_type."' title='$produk->judul_produk' alt='$produk->judul_produk' width='99' height='99'>";}
+									<img src='".base_url()."assets/images/produk/".$produk->foto.'_thumb'.$produk->foto_type."' title='$produk->judul_produk' alt='$produk->judul_produk' width='90' height='80'>";}
 									?>
                                 </div>
                             </div>
@@ -104,9 +104,8 @@
 
                         <div class="item-action">
                             <div class="action-btns">
-                                <a href="#" class="btn btn--round btn--lg">Live Preview</a>
                                 <a href="#" class="btn btn--round btn--lg btn--icon">
-                                    <span class="lnr lnr-heart"></span>Add To Favorites</a>
+                                    <span class="lnr lnr-eye"></span>Demo langsung</a>
                             </div>
                         </div>
                         <!-- end /.item__action -->
@@ -431,8 +430,6 @@
                                 <sup>&#82;&#112;</sup><?php echo number_format($produk->harga_diskon) ?></h1>
                         </div>
                         <div class="purchase-button">
-                            <a class="btn btn--lg btn--round bg-secondary"><span class="lnr lnr-bank"></span><del>Beli
-                                    VIA Merchant<del> DEMO</a>
                             <a href="<?php echo base_url('cart/buy/').$produk->id_produk ?>"
                                 class="btn btn--lg btn--round cart-btn bg-success">
                                 <span class="lnr lnr-cart"></span> Beli</a>
@@ -445,17 +442,17 @@
                         <ul class="data">
                             <li>
                                 <p>
-                                    <span class="lnr lnr-cart pcolor"></span>Diskon</p>
+                                    <span class="lnr lnr-bookmark"></span>Diskon</p>
                                 <span><?php echo $produk->diskon ?>%</span>
                             </li>
                             <li>
                                 <p>
-                                    <span class="lnr lnr-heart scolor"></span>Berat</p>
+                                    <span class="lnr lnr-layers"></span>Berat</p>
                                 <span><?php echo $produk->berat ?> /Gram</span>
                             </li>
                             <li>
                                 <p>
-                                    <span class="lnr lnr-bubble mcolor3"></span>Stok Produk</p>
+                                    <span class="lnr lnr-tag"></span>Stok Produk</p>
                                 <span><?php if($produk->stok > 0){echo "Tersedia";}else{echo "Kosong";} ?></span>
                             </li>
                         </ul>
@@ -492,7 +489,7 @@
 
                         <ul class="infos">
                             <li>
-                                <p class="data-label">Relis</p>
+                                <p class="data-label">Rilis</p>
                                 <p class="info"><?php echo date("j F Y", strtotime($produk->modified));?></p>
                             </li>
                             <li>
@@ -547,14 +544,11 @@
                             <!-- end /.social -->
 
                             <div class="author-btn">
-                                <a href="#" class="btn btn--sm btn--round">Lihat Profil</a>
+                                <a href="<?php echo base_url('profil')?>" class="btn btn--sm btn--round">Lihat Profil</a>
                                 <a href="#" class="btn btn--sm btn--round">Kirim Pesan</a>
                             </div>
                             <!-- end /.author-btn -->
                         </div>
-                        <!-- end /.author-infos -->
-
-
                     </div>
                     <!-- end /.author-card -->
                 </aside>
@@ -569,117 +563,91 @@
 <!--===========================================
         END SINGLE PRODUCT DESCRIPTION AREA
     ===============================================-->
-
+    
 <!--============================================
         START MORE PRODUCT ARE
     ==============================================-->
-<section class="more_product_area section--padding">
-    <div class="container">
+    <section class="products section--padding2">
+        <div class="container">
         <div class="row">
-            <!-- start col-md-12 -->
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h1>Rekomendasi Lainnya
-                    </h1>
-                </div>
-            </div>
-            <!-- end /.col-md-12 -->
-
-            <?php foreach($produk_lainnya as $lainnya){ ?>
-            <div class="col-lg-4 col-md-6">
-                <!-- start .single-product -->
-                <div class="product product--card product--card-small">
-
-                    <div class="product__thumbnail">
-                        <?php
-									if(empty($lainnya->foto)) {echo "<img src='".base_url()."assets/images/no_image_thumb.png'>";}
-									else { echo " <img src='".base_url()."assets/images/produk/".$lainnya->foto.'_thumb'.$lainnya->foto_type."'> ";}
-								?>
-                        <div class="prod_btn">
-                            <a href="<?php echo base_url("produk/$lainnya->slug_produk ") ?>"
-                                class="transparent btn--sm btn--round">INFO</a>
-                            <a href="#" class="transparent btn--sm btn--round">Live Demo</a>
-                        </div>
-                        <!-- end /.prod_btn -->
+                <!-- start col-md-12 -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h1> <b>Projek </b> 
+                            <span class="highlighted"><b>Lainnya</b> </span>
+                        </h1>
+                        <p>"Sama rasa Beda Tampilan . Sama Bahan Beda Racikan" - pusatkoding.com</p>
                     </div>
-                    <!-- end /.product__thumbnail -->
+                </div>
+                <!-- end /.col-md-12 -->
+            </div>
+            <!-- end /.row -->
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                <div class="row">
+                <?php foreach($produk_lainnya as $lainnya){ ?>
+                    <div class="col-lg-4 col-md-6">
+                        <!-- start .single-product -->
+                        <div class="product product--card">
 
-                    <div class="product-desc">
-                        <a href="#" class="product_title">
-                            <h4><?php echo character_limiter($lainnya->judul_produk,25) ?></h4>
-                        </a>
-                        <ul class="titlebtm">
-                            <!-- <li>
-                                        <img class="auth-img" src="images/auth3.jpg" alt="author image">
-                                        <p>
-                                            <a href="#">AazzTech</a>
-                                        </p>
-                                    </li> -->
-                            <li class="out_of_class_name">
-                                <!-- <div class="sell">
-                                            <p>
-                                                <span class="lnr lnr-cart"></span>
-                                                <span>27</span>
-                                            </p>
-                                        </div> -->
-                                <div class="rating product--rating">
-                                    <ul>
-                                        <li>
-                                            <span class="fa fa-star"></span>
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star"></span>
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star"></span>
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star"></span>
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star-half-o"></span>
-                                        </li>
-                                    </ul>
+                            <div class="product__thumbnail">
+                                <?php
+                                if(empty($lainnya->foto)) {echo "<img style='height:222px'   src='".base_url()."assets/template/fronted1/images/produk_kosong.png'>";}
+                                else { echo "<img style='height:222px'  src='".base_url()."assets/images/produk/".$lainnya->foto.'_thumb'.$lainnya->foto_type."'> ";}
+                                ?>
+                                <div class="prod_btn">
+                                    <a href="<?php echo base_url('produk/').$lainnya->slug_produk ?>" class="transparent btn--sm btn--round">Info Produk</a>
+                                    <a href="<?php echo ("$lainnya->demo") ?>" target="_blank" class="transparent btn--sm btn--round">Demo</a>
                                 </div>
-                            </li>
-                        </ul>
+                                <!-- end /.prod_btn -->
+                            </div>
+                            <!-- end /.product__thumbnail -->
 
-                    </div>
-                    <!-- end /.product-desc -->
+                            <div class="product-desc">
+                                    <a href="<?php echo base_url('auth/login')  ?>" class="product_title">
+                                    <h4 class="text-center"><?php echo character_limiter($lainnya->judul_produk,'50') ?></h4></a>
+                                    <article class="text-center"><?php echo character_limiter($lainnya->deskripsi,'100') ?></article>
+                                    <p class="text-center"><?php echo ($company_data->company_name) ?></p>
+                            </div>
+                            <!-- end /.product-desc -->
 
-                    <div class="product-purchase">
-                        <div class="price_love">
-                            <span><sup>&#82;&#112;</sup><?php echo number_format($lainnya->harga_diskon) ?></span>
+                            <div class="product-purchase">
+                                <div class="price_love">
+                                <span>&#82;&#112;<?php echo number_format($lainnya->harga_diskon) ?></span>
+                                </div>
+                                <div class="rating product--rating float-right">
+                                <ul>
+                                    <li>
+                                        <span class="fa fa-star"></span>
+                                    </li>
+                                    <li>
+                                        <span class="fa fa-star"></span>
+                                    </li>
+                                    <li>
+                                        <span class="fa fa-star"></span>
+                                    </li>
+                                    <li>
+                                        <span class="fa fa-star"></span>
+                                    </li>
+                                    <li>
+                                        <span class="fa fa-star"></span>
+                                    </li>
+                                </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- end /.product-purchase -->
                         </div>
+                        <!-- end /.single-product -->
                     </div>
-                    <!-- end /.product-purchase -->
+                    <?php } ?>
                 </div>
-                <!-- end /.single-product -->
-            </div>
-            <?php } ?>
-        </div>
-        <!-- end /.container -->
-    </div>
-    <!-- end /.container -->
-</section>
-<!--===================== END ALL  =====================================-->
-<section class="call-to-action bgimage">
-    <div class="bg_image_holder" style="background-image: url(&quot;images/calltobg.jpg&quot;); opacity: 1;">
-        <img src="images/calltobg.jpg" alt="images/calltobg.jpg">
-    </div>
-    <div class="container content_above">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="call-to-wrap">
-                    <h1 class="text--white">Ready to Join Our Marketplace!</h1>
-                    <h4 class="text--white">Over 25,000 designers and developers trust the MartPlace.</h4>
-                    <a href="#" class="btn btn--lg btn--round btn--white callto-action-btn">Join Us Today</a>
                 </div>
             </div>
         </div>
-    </div>
 </section>
-<!--===================== FOOTER========================================-->
-<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5a979c495d0b9500130f346b&product=sticky-share-buttons"></script>
+<script type="text/javascript"
+    src="//platform-api.sharethis.com/js/sharethis.js#property=5a979c495d0b9500130f346b&product=sticky-share-buttons">
+</script>
 <?php $this->load->view('front/footer'); ?>
 <!--===================== END FOOTER ===================================-->
