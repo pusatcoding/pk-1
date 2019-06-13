@@ -63,9 +63,9 @@ class Auth extends CI_Controller {
 				'name' 				=> $this->input->post('name'),
 				'username'  	=> $this->input->post('username'),
 				'phone'      	=> $this->input->post('phone'),
-				// 'address'    	=> $this->input->post('alamat'),
-				// 'provinsi' 		=> $this->input->post('provinsi_id'),
-				// 'kota'   			=> $this->input->post('kota_id'),
+				'address'    	=> $this->input->post('alamat'),
+				'provinsi' 		=> $this->input->post('provinsi_id'),
+				'kota'   			=> $this->input->post('kota_id'),
 				'usertype'    => '5',
 			);
 
@@ -88,31 +88,31 @@ class Auth extends CI_Controller {
 					'name'  => 'name',
 					'id'    => 'name',
 					'type'  => 'text',
-					'class'  => 'text_field',
+					'class'  => 'form-control',
 					'value' => $this->form_validation->set_value('name'),
 				);
 				$this->data['username'] = array(
 					'name'  => 'username',
 					'id'    => 'username',
-					'class'  => 'text_field',
+					'class'  => 'form-control',
 					'value' => $this->form_validation->set_value('username'),
 				);
 				$this->data['email'] = array(
 					'name'  => 'email',
 					'id'    => 'email',
-					'class'  => 'text_field',
+					'class'  => 'form-control',
 					'value' => $this->form_validation->set_value('email'),
 				);
 				$this->data['phone'] = array(
 					'name'  => 'phone',
 					'id'    => 'phone',
-					'class'  => 'text_field',
+					'class'  => 'form-control',
 					'value' => $this->form_validation->set_value('phone'),
 				);
 				$this->data['password'] = array(
 					'name'  => 'password',
 					'id'    => 'password',
-					'class'  => 'text_field',
+					'class'  => 'form-control',
 					'value' => $this->form_validation->set_value('password'),
 				);
 				$this->data['password_confirm'] = array(
@@ -134,13 +134,13 @@ class Auth extends CI_Controller {
 		      'id'          => 'provinsi_id',
 		      'class'       => 'form-control',
 		      'onChange'    => 'tampilKota()',
-		      
+		      'required'    => '',
 		    );
 		    $this->data['kota_id'] = array(
 		      'name'        => 'kota_id',
 		      'id'          => 'kota_id',
 		      'class'       => 'form-control',
-		      
+		      'required'    => '',
 		    );
 
 				$this->data['ambil_provinsi'] = $this->Wilayah_model->get_provinsi();

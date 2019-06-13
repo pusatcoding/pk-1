@@ -72,7 +72,6 @@ class Kategori extends CI_Controller {
       $this->data['produk_row'] = $this->Kategori_model->get_list_by_superskategori($segments[5], $this->limit, $offset)->row();
 
       $this->data['produk'] = $this->Kategori_model->get_list_by_superskategori($segments[5], $this->limit, $offset);
-      
 
       $this->data['pagination'] = $this->generate_paging($this->Kategori_model->get_by_superskategori_nr($segments[5]), base_url() . 'kategori/read/' . $segments[3] . '/' . $segments[4] . '/' . $segments[5],  6);
 

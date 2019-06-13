@@ -185,7 +185,6 @@
         </div>
     </div>
 </footer>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0C5etf1GVmL_ldVAichWwFFVcDfa1y_c"></script>
 <script src="<?php echo base_url()?>assets/template/fronted1/js/plugins.min.js"></script>
 <script src="<?php echo base_url()?>assets/template/fronted1/js/script.min.js"></script>
 

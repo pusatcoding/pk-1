@@ -1,0 +1,9 @@
+Perbaikan per 25 juli 2018
+1. Perbaikan query di masing2 model project bagian var $column yang ketika sorting/ searching data muncul error.
+2. Perbaikan query di bagian model featured yang tidak bisa sorting. Ini dikarenakan pada bagian function get_datatables_query ada sorting seperti: $this->db->order_by('no_urut', 'ASC');. Supaya bisa sorting maka saya hapus karna kalau tidak maka akan terkunci di bagian no.urut 
+
+Perbaikan per 24 agustus 2018
+1. Tidak bisa menghapus data produk di halaman admin, penyelesaian ada di db mengubah FK tabel transaksi_detail yg isinya dari restrict menjadi cascade semua
+
+Perbaikan per 29 Januari 2019
+1. Admin tidak bisa merubah data dia sendiri/ muncul error karna field usertype tidak dimasukkan

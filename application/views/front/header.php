@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.2/devicon.min.css"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114929317-1"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114929317-1"></script> 
+  <script src="<?php echo base_url()?>assets/plugins/jquery/jquery-3.3.1.js" rel="stylesheet"></script> 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -26,23 +27,6 @@
 
     gtag('config', 'UA-114929317-1');
   </script>
-    <script>
-      //function to fix height of iframe!
-      var calcHeight = function() {
-        var headerDimensions = $('.preview__header').height();
-        $('.full-screen-preview__frame').height($(window).height() - headerDimensions);
-      }
-
-      $(document).ready(function() {
-        calcHeight();
-      });
-
-      $(window).resize(function() {
-        calcHeight();
-      }).load(function() {
-        calcHeight();
-      });
-    </script>
 </head>
 
-<body>
+

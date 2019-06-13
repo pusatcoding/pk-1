@@ -23,7 +23,6 @@ class Produk extends CI_Controller
 		$this->data['kategori_data'] 			= $this->Kategori_model->get_all();
 		$this->data['kontak'] 						= $this->Kontak_model->get_all();
 		$this->data['total_cart_navbar'] 	= $this->Cart_model->total_cart_navbar();
-		
   }
 
 	public function read($id)
@@ -36,9 +35,9 @@ class Produk extends CI_Controller
     {
       /* memanggil function dari masing2 model yang akan digunakan */
     	$this->data['produk']       	= $this->Produk_model->get_by_id_front($id);
-		$this->data['produk_lainnya']	= $this->Produk_model->get_random();
+			$this->data['produk_lainnya']	= $this->Produk_model->get_random();
 
-		$this->data['title'] = $row->judul_produk;
+			$this->data['title'] = $row->judul_produk;
 
       /* memanggil view yang telah disiapkan dan passing data dari model ke view*/
 			$this->load->view('front/produk/body', $this->data);
@@ -77,37 +76,30 @@ class Produk extends CI_Controller
     //menghitung total baris
     $config['total_rows'] = $jumlah;
     //mengatur total data yang tampil per halamannya
-    $config['per_page'] = 8;
+    $config['per_page'] = 9;
     // tag pagination bootstrap
 
-		$config['full_tag_open'] 		= ' <nav class="navigation pagination" role="navigation"><div class="nav-links">';
-		$config['full_tag_close'] 		= '</div></nav>';
-		
-		$config['num_tag_open'] 		= '<span class="page-numbers" href="#">';
-		$config['num_tag_close'] 		= '</span>';
-		
-		$config['cur_tag_open'] 		= '<span class="page-numbers current" href="#">';
-		$config['cur_tag_close'] 		= '</span>';
-		
-		$config['next_link']       		= '<span class="next page-numbers"><i class="lnr lnr-arrow-right"></i>';
-		$config['next_tag_open'] 		= '<a href="#">';
-		$config['next_tagl_close'] 		= '</span></a>';
-		
-		$config['prev_link']        	= '<span class="next page-numbers"><i class="lnr lnr-arrow-left"></i>';
-		$config['prev_tag_open'] 		= '<a  href="#">';
-		$config['prev_tagl_close'] 		= '</span></a>';
-		
-		$config['first_link']       	= '<span class="next page-numbers"><i class="lnr lnr-arrow-down"></i>';
-		$config['first_tag_open'] 		= '<a  href="#">';
-		$config['first_tagl_close'] 	= '</span></a>';
-		
-		$config['last_link']        	= '<span class="next page-numbers"><i class="lnr lnr-arrow-up"></i>';
-		$config['last_tag_open'] 		= '<a href="#">';
-		$config['last_tagl_close'] 		= '</span></a>';
+		$config['full_tag_open'] 		= '<nav><ul class="pagination">';
+		$config['full_tag_close'] 	= '</ul></nav>';
+		$config['num_tag_open'] 		= '<li class="page-item"><span class="page-link">';
+		$config['num_tag_close'] 		= '</span></li>';
+		$config['cur_tag_open'] 		= '<li class="page-item active"><span class="page-link">';
+		$config['cur_tag_close'] 		= '<span class="sr-only">(current)</span></span></li>';
+		$config['next_link']        = "Selanjutnya";
+		$config['next_tag_open'] 		= '<li class="page-item"><span class="page-link">';
+		$config['next_tagl_close'] 	= '<span aria-hidden="true">&raquo;</span></span></li>';
+		$config['prev_link']        = "Sebelumnya";
+		$config['prev_tag_open'] 		= '<li class="page-item"><span class="page-link">';
+		$config['prev_tagl_close'] 	= '</span></li>';
+		$config['first_link']       = "Awal";
+		$config['first_tag_open'] 	= '<li class="page-item"><span class="page-link">';
+		$config['first_tagl_close'] = '</span></li>';
+		$config['last_link']        = 'Terakhir';
+		$config['last_tag_open'] 		= '<li class="page-item"><span class="page-link">';
+		$config['last_tagl_close'] 	= '</span></li>';
 
-	
-		// mengambil uri segment ke-4
-    	$dari = $this->uri->segment('4');
+    // mengambil uri segment ke-4
+    $dari = $this->uri->segment('4');
 
     /* eksekusi library pagination ke model penampilan data */
     $this->data['katalog_data'] = $this->Produk_model->get_all_katalog($config['per_page'],$dari);
