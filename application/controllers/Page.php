@@ -21,8 +21,9 @@ class Page extends CI_Controller {
     $this->data['company_data'] 			= $this->Company_model->get_by_company();
     $this->data['featured_data'] 			= $this->Featured_model->get_all_front();
     $this->data['kategori_data'] 			= $this->Kategori_model->get_all();
-		$this->data['kontak'] 						= $this->Kontak_model->get_all();
-		$this->data['total_cart_navbar'] 	= $this->Cart_model->total_cart_navbar();
+	$this->data['kontak'] 						= $this->Kontak_model->get_all();
+	$this->data['total_cart_navbar'] 	= $this->Cart_model->total_cart_navbar();
+	$this->data['customer_data'] 							= $this->Cart_model->get_data_customer();
   }
 
 	public function company()
@@ -39,6 +40,7 @@ class Page extends CI_Controller {
 
 	public function konfirmasi_pembayaran()
 	{
+		
 		$this->data['title'] 							= 'Konfirmasi Pembayaran';
 
 		$this->load->view('front/page/konfirmasi_pembayaran', $this->data);
@@ -56,8 +58,8 @@ class Page extends CI_Controller {
 		// setingan default tanpa smtp
 		$this->load->library('email');
 
-		$this->email->from('mail@azmicolejr.com', 'Konfirmasi Pembayaran Baru');
-		$this->email->to('azmicolejr@gmail.com');
+		$this->email->from('servisnawumicodex@gmail.com', 'Konfirmasi Pembayaran Baru');
+		$this->email->to('nawumicodex@gmail.com');
 		$this->email->subject('Konfirmasi Pembayaran Baru');
 		$this->email->message('Halo bos, ada konfirmasi pembayaran baru dengan rincian sebagai berikut: <br>
 		No. Invoice: '.$invoice.'<br>
@@ -71,50 +73,50 @@ class Page extends CI_Controller {
 		if ($this->email->send())
     {
 			$this->session->set_flashdata('message', '<div class="row"><div class="col-lg-12"><div class="alert alert-success alert">Konfirmasi pembayaran telah berhasil</div></div></div>');
-			redirect(site_url('konfirmasi_pembayaran'));
+			redirect(site_url('cart/history'));
     }
     else
     {
 			$this->session->set_flashdata('message', '<div class="row"><div class="col-lg-12"><div class="alert alert-success alert">Konfirmasi pembayaran gagal, silahkan coba kembali</div></div></div>');
-			redirect(site_url('konfirmasi_pembayaran'));
+			redirect(site_url('cart'));
     }
 
-		// Konfigurasi email dengan smtp
-    // $config = [
-    //    'smtp_host' => 'ssl://smtp.gmail.com',
-    //    'smtp_user' => 'azmicolejr@gmail.com',   // Ganti dengan email gmail Anda.
-    //    'smtp_pass' => 'passwordemailanda',             // Password gmail Anda.
-    //    'smtp_port' => 465,
-   // 	];
-		//
-    // // Load library email dan konfigurasinya.
-    // $this->load->library('email', $config);
-		//
-    // // Pengirim dan penerima email.
-    // $this->email->from('no-reply@azmicolejr.com', 'no-reply');    // Email dan nama pegirim.
-    // $this->email->to('azmi2793@gmail.com');                       // Penerima email.
-		//
-    // // Subject email.
-    // $this->email->subject('Kirim Email pada CodeIgniter');
-		//
-    // // Isi email. Bisa dengan format html.
-		// $this->email->message('Halo bos, ada konfirmasi pembayaran baru dengan rincian sebagai berikut: <br>
-		// No. Invoice: '.$invoice.'<br>
-		// Nama Lengkap: '.$nama.'<br>
-		// Jumlah: '.$jumlah.'<br>
-		// Bank Asal: '.$bank_asal.'<br>
-		// Bank Tujuan: '.$bank_tujuan.'<br>
-		// Silahkan diproses bos pesanannya. Customer menunggu.
-		// ');
-		//
-    // if ($this->email->send())
-    // {
-    //   echo 'Sukses! email berhasil dikirim.';
-    // }
-    // else
-    // {
-    //   echo 'Error! email tidak dapat dikirim.';
-    // }
+		//Konfigurasi email dengan smtp
+    $config = [
+       'smtp_host' => 'ssl://smtp.gmail.com',
+       'smtp_user' => 'servisnawumicodex@gmail.com',   // Ganti dengan email gmail Anda.
+       'smtp_pass' => '015999wisna',             // Password gmail Anda.
+       'smtp_port' => 465,
+   	];
+		
+    // Load library email dan konfigurasinya.
+    $this->load->library('email', $config);
+		
+    // Pengirim dan penerima email.
+    $this->email->from('servisnawumicodex@gmail.com', 'no-reply');    // Email dan nama pegirim.
+    $this->email->to('nawumicodex@gmail.com');                       // Penerima email.
+		
+    // Subject email.
+    $this->email->subject('Kirim Email pada CodeIgniter');
+		
+    // Isi email. Bisa dengan format html.
+		$this->email->message('Halo bos, ada konfirmasi pembayaran baru dengan rincian sebagai berikut: <br>
+		No. Invoice: '.$invoice.'<br>
+		Nama Lengkap: '.$nama.'<br>
+		Jumlah: '.$jumlah.'<br>
+		Bank Asal: '.$bank_asal.'<br>
+		Bank Tujuan: '.$bank_tujuan.'<br>
+		Silahkan diproses bos pesanannya. Customer menunggu.
+		');
+		
+    if ($this->email->send())
+    {
+      echo 'Sukses! email berhasil dikirim.';
+    }
+    else
+    {
+      echo 'Error! email tidak dapat dikirim.';
+    }
 	}
 
 }

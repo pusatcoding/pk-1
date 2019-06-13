@@ -1,43 +1,84 @@
-<?php $this->load->view('front/header'); ?>
-<?php $this->load->view('front/navbar'); ?>
+<div class="modal fade rating_modal" id="bayar" tabindex="-1" role="dialog" aria-labelledby="rating_modal">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title" id="rating_modal">Mohon Data Di isi Dengan Valid</h3>
+                <h4></h4>
+            </div>
+            <!-- end /.modal-header -->
 
-<div class="container">
-	<div class="row">
-    <div class="col-sm-12 col-lg-12">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-      	  <li><a href="<?php echo base_url() ?>"><i class="fa fa-home"></i> Home</a></li>
-      	  <li class="active">Konfirmasi Pembayaran</li>
-      	</ol>
-      </nav>
-    </div>
-		<div class="col-sm-12 col-lg-9"><h1>Konfirmasi Pembayaran</h1><hr>
-			<div class="row">
-        <div class="col-lg-12">
-          <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
-          <?php echo form_open('konfirmasi_kirim') ?>
-            <div class="form-group has-feedback"><label>No. Invoice</label>
-              <input type="text" name="invoice" class="form-control">
+            <div class="modal-body">
+                
+                <?php echo form_open('konfirmasi_kirim') ?>
+                <ul>
+                    <li>
+                        <input type="hidden" name="invoice" class="form-control" placeholder="Invoice"
+                            value="PK#<?php echo $customer_data->id_trans ?>">
+                    </li>
+                    <li>
+                        <p>Bank Asal</p>
+                        <div class="right_content">
+                            <div class="select-wrap">
+                                <select name="bank_asal">
+                                    <option value="BNI">BNI</option>
+                                    <option value="BRI">BRI</option>
+                                    <option value="MANDIRI">MANDIRI</option>
+                                    <option value="BCA">BCA</option>
+                                    <option value="BANK LAINYA">BANK LAINYA</option>
+                                </select>
+
+                                <span class="lnr lnr-chevron-down"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <p>Bank Tujuan</p>
+                        <div class="right_content">
+                            <div class="select-wrap">
+                                <select name="bank_tujuan">
+                                    <?php  foreach($data_bank as $bank){ ?>
+                                    <option
+                                        value="<?php echo($bank->nama_bank).' | '.$bank->atas_nama.' '. $bank->norek ?>">
+                                        <?php echo($bank->nama_bank).' | '.$bank->atas_nama.' '. $bank->norek ?>
+                                    </option>
+                                    <?php } ?>
+                                </select>
+
+                                <span class="lnr lnr-chevron-down"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <p>Jumlah</p>
+                        <div class="right_content">
+                            <input type="text" name="jumlah">
+                        </div>
+                    </li>
+                    <li>
+                        <p>Nama Pengirim</p>
+                        <div class="right_content">
+                            <input type="text" name="nama">
+                        </div>
+                    </li>
+
+                </ul>
+
+                <!-- <div class="rating_field">
+                    <label for="rating_field">Comments</label>
+                    <textarea name="rating_field" id="rating_field" class="text_field"
+                        placeholder="Please enter your rating reason to help the author"></textarea>
+                    <p class="notice">Your review will be ​publicly visible​ and the author may reply to your comments.
+                    </p>
+                </div> -->
+                <button type="submit" class="btn btn--round btn--default">Konfirmasi</button>
+                <button class="btn btn--round modal_close" data-dismiss="modal">Batal</button>
+                <?php echo form_close() ?>
+                <!-- end /.form -->
             </div>
-            <div class="form-group has-feedback"><label>Nama Pengirim</label>
-              <input type="text" name="nama" class="form-control">
-            </div>
-            <div class="form-group has-feedback"><label>Jumlah</label>
-              <input type="text" name="jumlah" class="form-control">
-            </div>
-            <div class="form-group has-feedback"><label>Bank Asal</label>
-              <input type="text" name="bank_asal" class="form-control">
-            </div>
-            <div class="form-group has-feedback"><label>Bank Tujuan</label>
-              <input type="text" name="bank_tujuan" class="form-control">
-            </div>
-            <button type="submit" name="button" class="btn btn-primary">Kirim</button>
-          <?php echo form_close() ?>
+            <!-- end /.modal-body -->
         </div>
-      </div>
-		</div>
-
-		<?php $this->load->view('front/sidebar'); ?>
-	</div>
-
-  <?php $this->load->view('front/footer'); ?>
+    </div>
+</div>

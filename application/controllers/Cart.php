@@ -10,12 +10,12 @@ class Cart extends CI_Controller {
 
 		$this->load->model('Bank_model');
 		$this->load->model('Cart_model');
-    $this->load->model('Company_model');
-    $this->load->model('Kontak_model');
+    	$this->load->model('Company_model');
+   	 	$this->load->model('Kontak_model');
 		$this->load->model('Produk_model');
 
 		$this->data['company_data'] 			= $this->Company_model->get_by_company();
-    $this->data['kontak'] 						= $this->Kontak_model->get_all();
+   		$this->data['kontak'] 						= $this->Kontak_model->get_all();
 		$this->data['total_cart_navbar'] 	= $this->Cart_model->total_cart_navbar();
   }
 
@@ -219,6 +219,7 @@ class Cart extends CI_Controller {
 		</div>');
 
 		$this->load->view('front/cart/finished', $this->data);
+		$this->load->view('front/page/konfirmasi_pembayaran', $this->data);
 
 	}
 
