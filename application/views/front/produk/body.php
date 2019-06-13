@@ -64,7 +64,7 @@
 <!--===================== END BREADCUM ==================================-->
 
 <!--===================== ALL  ==========================================-->
-<section class="single-product-desc">
+<section class="single-product-desc single-product-desc2">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
@@ -324,8 +324,8 @@
                     <div class="sidebar-card card-pricing">
                         <div class="price">
                             <h1>
-
-                                <sup>&#82;&#112;</sup><?php echo number_format($produk->harga_diskon) ?></h1>
+                                    <sup>&#82;&#112;</sup>
+                                    <span><?php echo number_format($produk->harga_diskon) ?></span></h1>
                         </div>
                         <div class="purchase-button">
                             <a href="<?php echo base_url('cart/buy/').$produk->id_produk ?>"
@@ -550,8 +550,6 @@
         </div>
     </div>
 </section>
-<script type="text/javascript"
-    src="//platform-api.sharethis.com/js/sharethis.js#property=5a979c495d0b9500130f346b&product=sticky-share-buttons">
-</script>
+
 <?php $this->load->view('front/footer'); ?>
 <!--===================== END FOOTER ===================================-->
